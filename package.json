@@ -1,13 +1,14 @@
 {
   "name": "katchongdai",
-  "version": "2.0.0",
-  "description": "ប្រព័ន្ធគ្រប់គ្រង និងកត់ត្រាចំណងដៃឌីជីថលគ្រប់កម្មវិធី — Full-Stack Cambodian Ceremony & Gift Money Management Platform",
+  "version": "2.1.0",
+  "description": "ប្រព័ន្ធគ្រប់គ្រង និងកត់ត្រាចំណងដៃឌីជីថលគ្រប់កម្មវិធី — Full-Stack & Offline-Ready Cambodian Ceremony & Gift Money Management Platform",
   "type": "module",
   "main": "server/index.js",
   "scripts": {
     "dev": "node --no-warnings server/index.js",
     "build": "vite build",
-    "start": "NODE_ENV=production node --no-warnings server/index.js"
+    "preview": "vite preview --host 0.0.0.0",
+    "start": "node --no-warnings server/index.js"
   },
   "repository": {
     "type": "git",
