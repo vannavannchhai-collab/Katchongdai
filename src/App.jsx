@@ -18,7 +18,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { EVENT_TYPES, formatUSD, formatKHR } from './constants/catalog';
-import { apiRequest } from './utils/api';
+import { apiRequest, getStorageMode } from './utils/api';
 
 import OverviewDashboard from './components/OverviewDashboard';
 import EventsManager from './components/EventsManager';
@@ -213,6 +213,14 @@ export default function App() {
               <strong className="text-amber-300 tabular-nums">
                 {formatUSD(bootstrap?.globalTotals?.combined_usd)}
               </strong>
+            </div>
+            <div className="pt-1.5 border-t border-white/10 flex items-center gap-1.5 text-[10px] text-emerald-300 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>
+                {getStorageMode() === 'server'
+                  ? 'SQLite Server បានភ្ជាប់រួចរាល់'
+                  : 'រក្សាទុកក្នុងឧបករណ៍ផ្ទាល់ (Offline/Vercel Ready)'}
+              </span>
             </div>
           </div>
         </aside>

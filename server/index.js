@@ -7,7 +7,8 @@ import { apiRouter } from './routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
-const isProd = process.env.NODE_ENV === 'production';
+const DIST_INDEX = path.join(ROOT_DIR, 'dist', 'index.html');
+const isProd = process.env.NODE_ENV === 'production' && fs.existsSync(DIST_INDEX);
 const PORT = Number(process.env.PORT || 3000);
 
 async function startServer() {
@@ -23,6 +24,11 @@ async function startServer() {
 
   // Mount API routes
   app.use('/api', apiRouter);
+
+  // Clean JSON handler for any unmatched /api path
+  app.use('/api', (req, res) => {
+    res.status(404).json({ error: `រកមិនឃើញផ្លូវ API៖ ${req.originalUrl}` });
+  });
 
   if (!isProd) {
     const { createServer: createViteServer } = await import('vite');
@@ -41,14 +47,8 @@ async function startServer() {
   } else {
     const distPath = path.join(ROOT_DIR, 'dist');
     app.use(express.static(distPath));
-    app.use((req, res, next) => {
-      if (req.path.startsWith('/api')) return next();
-      const indexFile = path.join(distPath, 'index.html');
-      if (fs.existsSync(indexFile)) {
-        res.sendFile(indexFile);
-      } else {
-        res.status(404).send('Build not found. Run npm run build first.');
-      }
+    app.use((req, res) => {
+      res.sendFile(DIST_INDEX);
     });
   }
 
