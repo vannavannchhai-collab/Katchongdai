@@ -1,0 +1,39 @@
+{
+  "name": "katchongdai",
+  "version": "2.0.0",
+  "description": "ប្រព័ន្ធគ្រប់គ្រង និងកត់ត្រាចំណងដៃឌីជីថលគ្រប់កម្មវិធី — Full-Stack Cambodian Ceremony & Gift Money Management Platform",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "node --no-warnings server/index.js",
+    "build": "vite build",
+    "start": "NODE_ENV=production node --no-warnings server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vannavannchhai-collab/Katchongdai.git"
+  },
+  "keywords": [
+    "katchongdai",
+    "cambodia",
+    "chongdai",
+    "wedding",
+    "ceremony",
+    "ledger",
+    "khmer"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "lucide-react": "^0.511.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-react": "^4.4.1",
+    "tailwindcss": "^4.1.7",
+    "vite": "^6.3.5"
+  }
+}

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-khmer: 'Kantumruy Pro', 'Battambang', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-moul: 'Moul', 'Kantumruy Pro', serif;
+  }
+
+  body {
+    font-family: var(--font-khmer);
+    line-height: 1.6;
+  }
+}
+
+.font-moul {
+  font-family: var(--font-moul);
+  line-height: 1.75;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ornamental Cambodian gold border pattern */
+.khmer-gold-gradient {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 45%, #f59e0b 75%, #b45309 100%);
+}
+
+.khmer-royal-bg {
+  background: radial-gradient(circle at top right, #312e81 0%, #1e1b4b 55%, #0f172a 100%);
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Official Print Stylesheet for Receipts & Chongdai Book */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    position: static !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-overlay-backdrop {
+    position: static !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .app-shell-when-printing-modal {
+    display: none !important;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  thead {
+    display: table-header-group;
+  }
+}
